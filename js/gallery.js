@@ -83,12 +83,12 @@ const refs = {
 
 const createGalleryItem = (picture) => {
     return `<li class="gallery-item">
-  <a class="gallery-link" href=${picture.original}>
+  <a class="gallery-link" href="${picture.original}">
     <img
       class="gallery-image"
-      src= ${picture.preview}
-      data-source=${picture.original}
-      alt=${picture.description}
+      src= "${picture.preview}"
+      data-source="${picture.original}"
+      alt="${picture.description}"
     />
   </a>
 </li>`;
@@ -101,6 +101,10 @@ refs.galleryList.innerHTML = addPictureToGallery;
 
 const onImgClick = (event) => {
     event.preventDefault();
+    if (event.target.nodeName !== "IMG") {
+        return;
+    }
+
     if (event.target === event.currentTarget) {
         return;
     }
